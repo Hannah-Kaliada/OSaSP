@@ -8,10 +8,9 @@ ifeq ($(MODE), debug)
 else
 	CFLAGS = $(CFLAGS_RELEASE)
 endif
-all: prog dirwalk
-prog: prog.c Makefile
-	$(CC) $(CFLAGS) prog.c -o prog
+all: dirwalk
 dirwalk: dirwalk.c Makefile
 	$(CC) $(CFLAGS) dirwalk.c -o dirwalk
 clean:
-	rm -f prog dirwalk
+	rm -f dirwalk
+	rm -rf dirwalk.dSYM
