@@ -124,21 +124,37 @@ int main(int argc, char *argv[]) {
     setlocale(LC_COLLATE, "ru_RU.UTF-8");
 
     char basePath[PATH_MAX_LENGTH] = ".";
-    char fileTypes[4] = {SYMBOLIC_LINK, DIRECTORY, REGULAR_FILE, '\0'};
     int isSortEnabled = 0;
 
-    int opt;
+    int showLinks = 0, showDirs = 0, showFiles = 0;
 
+    int opt;
+    int pathIndex = -1;
+
+    for (int i = 1; i < argc; i++) {
+        if (argv[i][0] != '-') {
+            pathIndex = i;
+            break;
+        }
+    }
+    if (pathIndex != -1) {
+        strncpy(basePath, argv[pathIndex], PATH_MAX_LENGTH - 1);
+        basePath[PATH_MAX_LENGTH - 1] = '\0';
+        for (int i = pathIndex; i < argc - 1; i++) {
+            argv[i] = argv[i + 1];
+        }
+        argc--;
+    }
     while ((opt = getopt(argc, argv, "ldfs")) != -1) {
         switch (opt) {
             case 'l':
-                fileTypes[0] = SYMBOLIC_LINK;
+                showLinks = 1;
                 break;
             case 'd':
-                fileTypes[1] = DIRECTORY;
+                showDirs = 1;
                 break;
             case 'f':
-                fileTypes[2] = REGULAR_FILE;
+                showFiles = 1;
                 break;
             case 's':
                 isSortEnabled = 1;
@@ -149,16 +165,11 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    if (fileTypes[0] == '\0' && fileTypes[1] == '\0' && fileTypes[2] == '\0') {
-        fileTypes[0] = SYMBOLIC_LINK;
-        fileTypes[1] = DIRECTORY;
-        fileTypes[2] = REGULAR_FILE;
+    if (!showLinks && !showDirs && !showFiles) {
+        showLinks = showDirs = showFiles = 1;
     }
 
-    if (optind < argc) {
-        strncpy(basePath, argv[optind], PATH_MAX_LENGTH - 1);
-        basePath[PATH_MAX_LENGTH - 1] = '\0';
-    }
+    char fileTypes[4] = {showLinks ? SYMBOLIC_LINK : '\0', showDirs ? DIRECTORY : '\0', showFiles ? REGULAR_FILE : '\0', '\0'};
 
     listFiles(basePath, fileTypes, isSortEnabled);
 
