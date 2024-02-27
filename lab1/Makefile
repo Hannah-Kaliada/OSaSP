@@ -12,10 +12,13 @@ else
     CFLAGS = $(CFLAGS_RELEASE)
 endif
 
-all: prog
+all: prog dirwalk
 
 prog: prog.c makefile
     $(CC) $(CFLAGS) prog.c -o prog
 
+dirwalk: dirwalk.c makefile
+    $(CC) $(CFLAGS) dirwalk.c -o dirwalk
+
 clean:
-    rm -f prog
+    rm -f prog dirwalk
