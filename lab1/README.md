@@ -15,13 +15,10 @@
 
 <h2>Режимы работы</h2>
 
-<p>Программа <code>dirwalk</code> поддерживает три режима работы, управляемых через опцию <code>mode</code> при компиляции.</p>
-
+<p>Программа <code>dirwalk</code> поддерживает два режима работы, управляемых через опцию <code>mode</code> при компиляции.</p>
 <ol>
     <li><strong>Режим отладки (<code>mode=debug</code>):</strong></li>
     <pre><code>make mode=debug</code></pre>
-    <li>Режим разработки (<code>mode=development</code>):</strong></li>
-    <pre><code>make mode=development</code></pre>
     <li>Режим выпуска (<code>mode=release</code>):</strong></li>
     <pre><code>make mode=release</code></pre>
 </ol>
