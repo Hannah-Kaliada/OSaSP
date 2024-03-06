@@ -4,13 +4,27 @@
 <p>Программа dirwalk, сканирующая файловую систему и выводящая
 информацию в соответствии с опциями программы.</p>
 
-
 <h2>Компиляция</h2>
 <p>Для компиляции программы выполните следующие команды:</p>
-<code>git clone https://github.com/Hannah-Kaliada/OSaSP.git</code><br>
-<code>cd OSaSP/lab1</code><br>
-<code>gcc -o dirwalk dirwalk.c</code><br>
-<code>./dirwalk -ldfs /path/to/directory/for/scan</code> <br>
+<pre>
+<code>git clone https://github.com/Hannah-Kaliada/OSaSP.git</code>
+<code>cd OSaSP/lab1</code>
+<code>gcc -o dirwalk dirwalk.c</code>
+<code>./dirwalk -ldfs /path/to/directory/for/scan</code>
+</pre>
+
+<h2>Режимы работы</h2>
+
+<p>Программа <code>dirwalk</code> поддерживает три режима работы, управляемых через опцию <code>mode</code> при компиляции.</p>
+
+<ol>
+    <li><strong>Режим отладки (<code>mode=debug</code>):</strong></li>
+    <pre><code>make mode=debug</code></pre>
+    <li>Режим разработки (<code>mode=development</code>):</strong></li>
+    <pre><code>make mode=development</code></pre>
+    <li>Режим выпуска (<code>mode=release</code>):</strong></li>
+    <pre><code>make mode=release</code></pre>
+</ol>
 <ul>
     <li>Для обработки опций использована библиотека <code>getopt(3)</code>.</li>
     <li>Программа поддерживает опции <code>-l</code>, <code>-d</code>, <code>-f</code>, <code>-s</code>.</li>
