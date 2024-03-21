@@ -89,7 +89,7 @@ void launch_child_process(char symbol) {
         perror("fork");
         exit(EXIT_FAILURE);
     } else if (pid == 0) {
-        execve("/. child", args, environ);
+        execve("/.child", args, environ);
         perror("execve");
         exit(EXIT_FAILURE);
     } else {
