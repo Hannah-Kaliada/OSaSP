@@ -1,11 +1,20 @@
-CC = gcc
-CFLAGS = -W -Wall -Wno-unused-parameter -Wno-unused-variable -std=c11 -pedantic
-all: lab2
-lab2: parent.o child.o
-    $(CC) $(CFLAGS) parent.o child.o -o lab2
-parent.o: parent.c
-    $(CC) $(CFLAGS) -c parent.c -o parent.o
-child.o: child.c
-    $(CC) $(CFLAGS) -c child.c -o child.o
+CC=gcc
+CFLAGS=-D_POSIX_C_SOURCE=200809L -W -Wall -Wno-unused-parameter -Wno-unused-variable -std=c11 -pedantic
+
+.PHONY: clean
+
+export CHILD_PATH=./child
+export LC_COLLATE=С
+
+all: parent child run
+
+parent: parent.c
+	$(CC) $(CFLAGS) -o parent parent.c
+
+child: child.c
+	$(CC) $(CFLAGS) -o child child.c
+
+run: parent
+	./parent env.txt
 clean:
-    rm -f lab2 *.o
+	rm parent child
