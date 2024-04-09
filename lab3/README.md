@@ -12,7 +12,7 @@
 <code>make</code>
 </pre>
     Программа поддерживает опции <code>+</code>, <code>-</code>, <code>l</code>, <code>k</code>,
-      <code>s</code>, <code>g</code>, <code>s<num></code>, <code>g<num></code>, <code>p<num></code>, <code>q</code>.</li>
+      <code>s</code>, <code>g</code>, <code>s&lt;num&gt;</code>, <code>g&lt;num&gt;</code>, <code>p&lt;num&gt;</code>, <code>q</code>.</li>
       <ul>
     <li><code>-</code> : Уничтожить последний созданный дочерний процесс</li>
     <li><code>q</code> : Удалить все процессы и выйти</li>
