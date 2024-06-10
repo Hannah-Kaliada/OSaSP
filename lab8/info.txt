@@ -1,0 +1,10 @@
+Welcome to the Simple Educational Server.
+Available options:
+- list: List files in the current directory
+- cd <directory>: Change directory to the specified relative path
+- info: Get information from the server's information file
+- echo <message>: Echo back the provided message
+- quit: Terminate the connection with the server
+
+Additionally, you can use the "@" symbol followed by a file name to execute commands stored in that file. 
+Each line in the file will be treated as a separate command and executed accordingly.

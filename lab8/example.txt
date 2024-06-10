@@ -1,0 +1,7 @@
+info
+list
+cd /direct
+list
+cd ..
+list
+echo Hello, server!
